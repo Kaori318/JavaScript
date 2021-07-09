@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="style.css">
+   <title>Document</title>
+</head>
+
+<body>
+   <div class="container">
+      <div>
+         <h2>Атрибуты async/defer – только для внешних скриптов</h2>
+         <p>Специальные атрибуты async и defer используются для того, чтобы пока грузится внешний скрипт – браузер
+            показал остальную (следующую за ним) часть страницы. </p>
+         <h3>Атрибут defer</h3>
+         <ul>
+            <li>Поддерживается всеми браузерами, включая самые старые IE</li>
+            <li>Относительный порядок
+               скриптов с defer будет сохранён</li>
+            <li>Всегда ждёт, пока весь HTML-документ будет готов</li>
+         </ul>
+         <h3>Атрибут async</h3>
+         <ul>
+            <li>Поддерживается всеми браузерами, кроме IE9</li>
+            <li>Выполняется по мере загрузки.</li>
+            <li>Не ждет готовности документа</li>
+         </ul>
+      </div>
+
+   </div>
+
+</body>
+
+</html>
