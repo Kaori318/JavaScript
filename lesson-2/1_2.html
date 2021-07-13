@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <link rel="stylesheet" href="style.css">
+   <script src="js/2.js" defer></script>
+</head>
+
+<body>
+   <div class="container">
+      <div class="task">
+         <p>Дан код: <br>
+            var a = 1, b = 1, c, d; <br>
+            c = ++a; alert(c); //2 <span>++a увеличит значение a на 1 и вернет увеличенное значение; c = 2;
+               a = 2</span><br>
+            d = b++; alert(d); //1 <span>b++ увеличит значение b на 1 , но вернет исходное значение, которое b
+               удерживалось до увеличения; d = 1; b = 2;</span>
+            <br>
+            c = (2+ ++a); alert(c); // 5 <span> (2 + (2 + 1)) = 5; a = 3;</span><br>
+            d = (2+ b++); alert(d); // 4 <span> (2 + 2) = 4; b = 3;</span><br>
+            alert(a); // 3 <br>
+            alert(b); // 3 <br>
+            Почему код даёт именно такие результаты? <br>
+            </span>
+         </p>
+      </div>
+      <div class="task">Чему будет равен x в примере ниже? <br>
+         var a = 2; <br>
+         var x = 1 + (a *= 2); <span>a = a * 2; a = 4; x = 5</span>
+      </div>
+   </div>
+
+</body>
+
+</html>
