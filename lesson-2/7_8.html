@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <link rel="stylesheet" href="style.css">
+   <script src="js/8.js" defer></script>
+</head>
+
+<body>
+   <div class="container">
+      <div>
+
+         <div class="task">
+            <p>*Сравнить null и 0. Попробуйте объяснить результат.
+            </p>
+            <br>
+            <p><span>
+                  alert( null > 0 ); // false <br>
+                  alert( null == 0 ); // false <br>
+                  alert( null >= 0 ); // true <br>
+                  Причина в том, что нестрогое равенство и сравнения <br> > < <br> >= <= <br> работают по-разному. <br>
+                        Сравнения
+                        преобразуют null в число, рассматривая его как 0. Поэтому выражение null>= 0 истинно, а null
+                        > 0 ложно. <br>
+
+                        С другой стороны, для нестрогого равенства == значений undefined и null действует особое
+                        правило: эти значения ни к чему не приводятся, они равны друг другу и не равны ничему другому.
+                        Поэтому null == 0 ложно.</span></p>
+         </div>
+         <div class="task">
+            <p>*С помощью рекурсии организовать функцию возведения числа в степень. Формат: function power(val, pow),
+               где
+               val
+               – заданное число, pow – степень.
+            </p>
+         </div>
+      </div>
+
+</body>
+
+</html>
