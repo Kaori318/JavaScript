@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+
+<body>
+   <script>
+      function GetDigitsOfNumber(number) {
+         if (number > 0 && number < 999) {
+            this.thirDigit = Math.floor(number / 100);
+            this.secondDigit = Math.floor(number / 10) % 10;
+            this.firstDigit = number % 10;
+         } else console.log('Значение аргумента должно быть целым числом от 0 до 999')
+      }
+      console.log(new GetDigitsOfNumber(689));
+   </script>
+
+</body>
+
+</html>
