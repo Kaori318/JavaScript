@@ -85,7 +85,7 @@ const map = {
     }
   },
 
-  render(snakePointsArray, foodPoint) {
+  render(snakePointsArray, foodPoint, obstaclePoint) {
     for (const cell of this.usedCells) {
       cell.className = 'cell';
     }
@@ -101,6 +101,10 @@ const map = {
     const foodCell = this.cells[`x${foodPoint.x}_y${foodPoint.y}`];
     foodCell.classList.add('food');
     this.usedCells.push(foodCell);
+
+    const obstacleCell = this.cells[`x${obstaclePoint.x}_y${obstaclePoint.y}`];
+    obstacleCell.classList.add('obstacle');
+    this.usedCells.push(obstacleCell);
   },
 };
 
@@ -183,6 +187,27 @@ const food = {
   },
 };
 
+const obstacle = {
+x: null,  
+  y: null,
+
+  getCoordinates() { 
+    return{
+    x: this.x, 
+    y: this.y
+    }
+  },
+
+  setCoordinates(point) {  
+    this.x = point.x;
+    this.y = point.y;
+  },
+
+  isOnPoint(point) {  
+    return this.x === point.x && this.y === point.y;
+    
+  },
+};
 const status = {
   condition: null,
 
@@ -207,11 +232,28 @@ const status = {
   },
 };
 
+const legend = {
+  account: 0,
+init(){
+  this.show()
+},
+am(){
+  this.account++;
+this.show();
+},
+show()
+  {
+    document.getElementById('legend').textContent = `Счёт:  ${this.account}`
+  }
+};
+
 const game = {
+  legend,
   config,
   map,
   snake,
   food,
+  obstacle,
   status,
   tickInterval: null,
 
@@ -227,6 +269,7 @@ const game = {
     }
 
     this.map.init(this.config.getRowsCount(), this.config.getColsCount());
+    this.legend.init();
     this.setEventHandlers();
     this.reset();
   },
@@ -288,6 +331,7 @@ const game = {
     this.stop();
     this.snake.init(this.getStartSnakeBody(), 'up');
     this.food.setCoordinates(this.getRandomFreeCoordinates());
+    this.obstacle.setCoordinates(this.getRandomFreeCoordinates());
     this.render()
   },
 
@@ -301,7 +345,7 @@ const game = {
   },
 
   getRandomFreeCoordinates() {
-    const exclude = [this.food.getCoordinates(), ...this.snake.getBody()];
+    const exclude = [this.food.getCoordinates(), this.obstacle.getCoordinates(), ...this.snake.getBody()];
 
     while (true) {
       const rndPoint = {
@@ -337,11 +381,10 @@ const game = {
     if (!this.canMakeStep()) return this.finish();
     if (this.food.isOnPoint(this.snake.getNextStepHeadPoint())) {
       this.snake.growUp();
+      this.legend.am();
       this.food.setCoordinates(this.getRandomFreeCoordinates());
-
       if (this.isGameWon()) this.finish();
     }
-
     this.snake.makeStep();
     this.render();
   },
@@ -352,7 +395,8 @@ const game = {
         nextHeadPoint.x < this.config.getColsCount() &&
         nextHeadPoint.y < this.config.getRowsCount() &&
         nextHeadPoint.x >= 0 &&
-        nextHeadPoint.y >= 0;
+        nextHeadPoint.y >= 0 &&
+        !this.obstacle.isOnPoint(nextHeadPoint);
   },
 
   isGameWon() {
@@ -369,8 +413,9 @@ const game = {
         : playButton.classList.remove('disabled');
   },
 
+
   render() {
-    this.map.render(this.snake.getBody(), this.food.getCoordinates());
+    this.map.render(this.snake.getBody(), this.food.getCoordinates(), this.obstacle.getCoordinates());
   },
 };
 
