@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+
+<body>
+   <script>
+      //1 задание
+      //Пока затрудняюсь ответить. Еще разбираюсь с этой темой. 
+
+      //2.1 
+
+      //var a;
+      if (!("a" in window)) { //переменная a есть в window
+         var a = 1; //переменная a глобальная и перемещается в вверх
+      }
+      alert(a); //undefined
+
+      /*  2.2
+     
+     var b = function a(x) {
+         x && a(--x);
+      };
+      //a = b; //function a(x) {x && a(--x);};
+      alert(a); //Ошибка :Uncaught ReferenceError: a is not defined
+ */
+
+      /* 2.3
+
+           function a(x) {
+              return x * 2;
+           }
+           var a;
+           alert(a); //function a(x) {return x * 2;} ссылка на функцию
+      */
+      /* 2.4
+            "use strict"
+
+            function b(x, y, a) {
+               arguments[2] = 10; //2 аргумент принимает значение 10
+               alert(a); //10. в строгом режиме 3  arguments = Arguments(3)
+            };
+            b(1, 2, 3); */
+
+
+      /*  2.5
+      
+      function a() {
+          alert(this);
+       }
+       a.call(null); //[object Window] */
+   </script>
+</body>
+
+</html>
